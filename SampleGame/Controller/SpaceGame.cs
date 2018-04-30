@@ -4,13 +4,18 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace SampleGame
+// Reference for all Model Objects
+using SampleGame.Model;
+
+namespace SampleGame.Controller
 {
 	/// <summary>
 	/// This is the main type for your game.
 	/// </summary>
 	public class SpaceGame : Game
 	{
+		private Player player;
+
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 
@@ -29,6 +34,7 @@ namespace SampleGame
 		protected override void Initialize()
 		{
 			// TODO: Add your initialization logic here
+			player = new Player();
 
 			base.Initialize();
 		}
@@ -42,7 +48,12 @@ namespace SampleGame
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			//TODO: use this.Content to load your game content here 
+			//TODO: use this.Content to load your game content here
+
+			// Load the player resources 
+			Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+
+			player.Initialize(Content.Load<Texture2D>("Texture/player"), playerPosition);
 		}
 
 		/// <summary>
