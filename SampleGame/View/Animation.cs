@@ -143,7 +143,7 @@ namespace SampleGame.View
 			if (Active)
 			{
 				spriteBatch.Draw(spriteStrip, destinationRect, sourceRect, color);
-			 }
+			}
 		}
 	}
 }

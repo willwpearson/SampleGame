@@ -176,16 +176,17 @@ namespace SampleGame.Controller
 
 			// Draw the Player 
 			player.Draw(spriteBatch); 
-			// Stop drawing 
-			spriteBatch.End();
-
-			base.Draw(gameTime);
 
 			// Draw the Enemies
 			for (int i = 0; i<enemies.Count; i++)
 			{
 				enemies[i].Draw(spriteBatch);
 			}
+
+			// Stop drawing 
+			spriteBatch.End();
+
+			base.Draw(gameTime);
 		}
 
 		private void UpdatePlayer(GameTime gameTime)
