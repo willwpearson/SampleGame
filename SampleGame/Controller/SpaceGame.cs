@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Input;
 // Reference for all Model Objects
 using SampleGame.Model;
 
+// Link the View namespace
+using SampleGame.View;
+
 namespace SampleGame.Controller
 {
 	/// <summary>
@@ -64,10 +67,13 @@ namespace SampleGame.Controller
 
 			//TODO: use this.Content to load your game content here
 
-			// Load the player resources 
-			Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+			// Load the player resources
+			Animation playerAnimation = new Animation();
+			Texture2D playerTexture = Content.Load<Texture2D>("Animation/shipAnimation");
+			playerAnimation.Initialize(playerTexture, Vector2.Zero, 115, 69, 8, 30, Color.White, 1f, true);
 
-			player.Initialize(Content.Load<Texture2D>("Texture/player"), playerPosition);
+			Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+			player.Initialize(playerAnimation, playerPosition);
 		}
 
 		/// <summary>
@@ -122,6 +128,7 @@ namespace SampleGame.Controller
 
 		private void UpdatePlayer(GameTime gameTime)
 		{
+			player.Update(gameTime);
 
 			// Get Thumbstick Controls
 			player.Position.X += currentGamePadState.ThumbSticks.Left.X * playerMoveSpeed;
