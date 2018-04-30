@@ -85,6 +85,13 @@ namespace SampleGame.Controller
 
 			//TODO: Add your drawing code here
 
+			// Start drawing 
+			spriteBatch.Begin(); 
+			// Draw the Player 
+			player.Draw(spriteBatch); 
+			// Stop drawing 
+			spriteBatch.End();
+
 			base.Draw(gameTime);
 		}
 	}

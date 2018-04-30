@@ -19,7 +19,7 @@ namespace SampleGame.Model
 		public Vector2 Position;
 
 		// State of the player
-		private bool active
+		private bool active;
 		public bool Active
 		{
 		get { return active; }
