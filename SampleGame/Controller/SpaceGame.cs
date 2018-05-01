@@ -74,6 +74,11 @@ namespace SampleGame.Controller
 		// The music played during gameplay
 		private Song gameplayMusic;
 
+		//Number that holds the player score
+		private int score;
+		// The font used to display UI elements
+		private SpriteFont font;
+
 		public SpaceGame()
 		{
 			graphics = new GraphicsDeviceManager(this);
@@ -115,6 +120,9 @@ namespace SampleGame.Controller
 			fireTime = TimeSpan.FromSeconds(.15f);
 
 			explosions = new List<Animation>();
+
+			//Set player's score to zero
+			score = 0;
 
 			base.Initialize();
 		}
@@ -247,6 +255,11 @@ namespace SampleGame.Controller
     			explosions[i].Draw(spriteBatch);
 			}
 
+			// Draw the score
+			spriteBatch.DrawString(font, "score: " + score, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y), Color.White);
+			// Draw the player health
+			spriteBatch.DrawString(font, "health: " + player.Health, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + 30), Color.White);
+
 			// Stop drawing 
 			spriteBatch.End();
 
@@ -293,6 +306,13 @@ namespace SampleGame.Controller
 				AddProjectile(player.Position + new Vector2(player.Width / 2, 0));
 				// Play the laser sound
 				laserSound.Play();
+			}
+
+			// reset score if player health goes to zero
+			if (player.Health <= 0)
+			{
+    			player.Health = 100;
+    			score = 0;
 			}
 		}
 
@@ -344,6 +364,9 @@ namespace SampleGame.Controller
 						explosionSound.Play();
 					}
 					enemies.RemoveAt(i);
+
+					//Add to the player's score
+					score += enemies[i].Value;
 				}
 		 	}
 		}
