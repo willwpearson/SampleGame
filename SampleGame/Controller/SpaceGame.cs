@@ -219,14 +219,14 @@ namespace SampleGame.Controller
     			projectiles[i].Draw(spriteBatch);
 			}	
 
-			// Stop drawing 
-			spriteBatch.End();
-
 			// Draw the explosions
 			for (int i = 0; i<explosions.Count; i++)
 			{
     			explosions[i].Draw(spriteBatch);
 			}
+
+			// Stop drawing 
+			spriteBatch.End();
 
 			base.Draw(gameTime);
 		}
