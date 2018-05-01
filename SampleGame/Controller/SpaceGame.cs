@@ -255,10 +255,10 @@ namespace SampleGame.Controller
     			explosions[i].Draw(spriteBatch);
 			}
 
-			// Draw the score
-			spriteBatch.DrawString(font, "score: " + score, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y), Color.White);
-			// Draw the player health
-			spriteBatch.DrawString(font, "health: " + player.Health, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + 30), Color.White);
+			//// Draw the score
+			//spriteBatch.DrawString(font, "score: " + score, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y), Color.White);
+			//// Draw the player health
+			//spriteBatch.DrawString(font, "health: " + player.Health, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + 30), Color.White);
 
 			// Stop drawing 
 			spriteBatch.End();
@@ -362,11 +362,11 @@ namespace SampleGame.Controller
 						AddExplosion(enemies[i].Position);
 						// Play the explosion sound
 						explosionSound.Play();
+
+						//Add to the player's score
+						score += enemies[i].ScoreValue;
 					}
 					enemies.RemoveAt(i);
-
-					//Add to the player's score
-					score += enemies[i].Value;
 				}
 		 	}
 		}
