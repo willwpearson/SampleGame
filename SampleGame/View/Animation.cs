@@ -126,7 +126,7 @@ namespace SampleGame.View
 				}
 
 				// Reset the elapsed time to zero
-				elapsedTime = 0;
+					elapsedTime = 0;
 			}
 
 			// Grab the correct frame in the image strip by multiplying the currentFrame index by the frame width

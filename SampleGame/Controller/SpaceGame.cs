@@ -167,6 +167,8 @@ namespace SampleGame.Controller
 
 			// Start the music right away
 			PlayMusic(gameplayMusic);
+
+			//font = Content.Load<SpriteFont>("Font/gameFont.spritefont");
 		}
 
 		/// <summary>
